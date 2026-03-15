@@ -1,12 +1,13 @@
 import axios from 'axios';
+import { API_BASE_URL } from './api';
 
 // Use local proxy routes to avoid CORS issues
-const SCHOOLS_URL = '/api/geoasr/schools';
-const KINDERGARTENS_URL = '/api/geoasr/kindergartens';
-const SSV_URL = '/api/geoasr/healthcare';
+const SCHOOLS_URL = 'geoasr/schools';
+const KINDERGARTENS_URL = 'geoasr/kindergartens';
+const SSV_URL = 'geoasr/healthcare';
 
 // No token needed on client side as it's handled by the server proxy
-const geoApi = axios.create();
+const geoApi = axios.create({ baseURL: API_BASE_URL });
 
 export interface GeoAsrFeature {
   id: number;

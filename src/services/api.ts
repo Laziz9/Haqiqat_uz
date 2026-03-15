@@ -1,14 +1,10 @@
 import axios from 'axios';
 
-const getBaseURL = () => {
-  if (typeof window !== 'undefined') {
-    return '/api/';
-  }
-  return (import.meta.env.VITE_API_BASE_URL || '/api/').replace(/\/$/, '') + '/';
-};
+export const API_BASE_URL =
+  (import.meta.env.VITE_API_BASE_URL || '/api/').replace(/\/$/, '') + '/';
 
 const api = axios.create({
-  baseURL: getBaseURL(),
+  baseURL: API_BASE_URL,
 });
 
 // Add a request interceptor for auth if needed

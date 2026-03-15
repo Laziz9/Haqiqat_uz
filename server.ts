@@ -3,6 +3,7 @@ import path from "path";
 import { createServer as createViteServer } from "vite";
 import axios from "axios";
 import dotenv from "dotenv";
+import cors from "cors";
 import pool, { initDb } from "./server/db.js";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -14,6 +15,17 @@ async function startServer() {
 
   const app = express();
   const PORT = Number(process.env.PORT) || 3000;
+
+  const corsOrigins = (process.env.CORS_ORIGIN || "")
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+
+  app.use(
+    cors({
+      origin: corsOrigins.length > 0 ? corsOrigins : true,
+    })
+  );
 
   app.use(express.json({ limit: '10mb' }));
 
