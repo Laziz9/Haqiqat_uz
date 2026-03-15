@@ -1,0 +1,7 @@
+{
+  "name": "Haqiqat Uz",
+  "description": "Citizen-led oversight of government infrastructure projects and problem reporting platform.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
